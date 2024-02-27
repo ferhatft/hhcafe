@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+<main id="main">
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+
+
+      {% if aboutModel %}
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+          <div class="about-img">
+
+            {% if aboutModel.image %}
+            <img src="{{aboutModel.image.url}}" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/about.jpg '%}" alt="">
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+
+          <h3>{{aboutModel.title}}</h3>
+
+          <p class="font-italic">{{aboutModel.pragraf}}</p>
+
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafiki}} </p>
+          {% endif %}
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafüç}} </p>
+          {% endif %}
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafdört}} </p>
+          {% endif %}
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafbeş}} </p>
+          {% endif %}
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafaltı}} </p>
+          {% endif %}
+          {% if aboutModel.pragrafiki %}
+          <p> {{aboutModel.pragrafyedi}} </p>
+          {% endif %}
+
+
+        </div>
+      </div>
+
+      {% else %}
+
+
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+          <div class="about-img">
+            <img src="{% static 'assets/img/about.jpg '%}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+          <h3>Voluptatem dignissimos</h3>
+          <p class="font-italic">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore
+            magna aliqua.
+          </p>
+
+          <p>
+            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum
+          </p>
+          <p>
+            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum
+          </p>
+          <p>
+            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum
+          </p>
+
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </section><!-- End About Section -->
+</main><!-- End #main -->
+
+{% endblock body %}

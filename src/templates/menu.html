@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+<main id="main">
+
+
+  <!-- ======= Menu Section ======= -->
+  <section id="menu" class="menu ">
+    <div class="container" data-aos="fade-up">
+      <div class="col-lg-8 col-md-8 m-auto ">
+        <!-- 
+      <div class="section-title">
+        <h2>Menu</h2>
+        <p>Check Our Tasty Menu</p>
+      </div> -->
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="menu-flters">
+              <li data-filter="*" class="filter-active">TÜM LEZETLERİMİZ</li>
+              <li data-filter=".filter-kahveler">COFFEE BASED</li>
+              <li data-filter=".filter-turkkahveleri">TÜRK KAHVESİ</li>
+              <li data-filter=".filter-hotdrinks ">HOT DRİNKS</li>
+              <li data-filter=".filter-icedrinks">SOĞUK İÇECEKLER </li>
+              <li data-filter=".filter-milhshake">MILK FhoSHAKELER</li>
+              <li data-filter=".filter-waffle">WAFFLE</li>
+            </ul>
+          </div>
+        </div>
+
+
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+          {% if turkkahveleri %}
+          {% for obj  in turkkahveleri  %}
+
+          <div class="col-lg-6 menu-item filter-turkkahveleri">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          <!--  -->
+
+          {% if kahveler %}
+          {% for obj  in kahveler  %}
+
+          <div class="col-lg-6 menu-item filter-kahveler">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          <!--  -->
+
+          {% if hotdrinks %}
+          {% for obj  in hotdrinks  %}
+
+          <div class="col-lg-6 menu-item filter-hotdrinks">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          <!--  -->
+
+          {% if icedrinks %}
+          {% for obj  in icedrinks  %}
+
+          <div class="col-lg-6 menu-item filter-icedrinks">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          <!--  -->
+
+          {% if milhshake %}
+          {% for obj  in milhshake  %}
+
+          <div class="col-lg-6 menu-item filter-milhshake">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+          <!--  -->
+
+          {% if waffle %}
+          {% for obj  in waffle  %}
+
+          <div class="col-lg-6 menu-item filter-waffle">
+            {% if obj.image %}
+
+            <img src="{{obj.image.url}}" class="menu-img" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/menu/lobster-roll.jpg'%}" class="menu-img" alt="">
+            {% endif %}
+            <div class="menu-content">
+              <a href="#">{{ obj.title }}</a>
+              {% if obj.fiyat  %}
+              <span>{{ obj.fiyat }}
+                TL
+                {% endif %} </span>
+            </div>
+            <div class="menu-ingredients">
+              {{ obj.aciklama }}
+            </div>
+          </div>
+
+          {% endfor %}
+          {% endif %}
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Menu Section -->
+
+</main><!-- End #main -->
+
+{% endblock body %}

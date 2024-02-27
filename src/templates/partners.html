@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+<main id="main">
+
+  <!-- ======= Chefs Section ======= -->
+  <section id="chefs" class="chefs">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Personeller</h2>
+        <p>Profesyonel Ekibimiz</p>
+      </div>
+
+      <div class="row">
+        {% if objects %}
+        {% for obj in objects  %}
+        <div class="col-lg-4 col-md-6">
+          <div class="member" data-aos="zoom-in" data-aos-delay="100">
+            <img src="{{ obj.image.url }}" class="img-fluid" alt="">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4> {{ obj.name }}</h4>
+                {% if obj.alan  %}
+
+                <span>{{ obj.alan }}</span>
+                {% endif %}
+              </div>
+              <div class="social">
+                <a href="{{ obj.facebook }} " target="_blank"><i class="icofont-facebook"></i></a>
+                <a href="{{ obj.instagram }}" target="_blank"><i class="icofont-instagram"></i></a>
+
+                <a href="#{{obj.name|slugify }}" data-toggle="modal"><i class="icofont-search-2"></i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <div class="col-lg-4 col-md-6">
+          <div class="member" data-aos="zoom-in" data-aos-delay="100">
+            <img src="*" class="img-fluid" alt="">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4> Oref Tasarım. Admin panelinden Partner ekleyin..</h4>
+
+              </div>
+              <div class="social">
+                <a href=" https://ferhattugrul.online/" target="_blank"><i class="icofont-facebook"></i></a>
+                <a href="https://ferhattugrul.online/" target="_blank"><i class="icofont-instagram"></i></a>
+                <a data-toggle="modal" href="#1"><i class="icofont-pencil"></i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+
+      </div>
+
+    </div>
+  </section><!-- End Chefs Section -->
+
+
+
+
+
+</main><!-- End #main -->
+
+{% if objects %}
+{% for obj in objects  %}
+
+<div class="portfolio-modal modal fade" id="{{obj.name|slugify}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="/static/assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="row justify-content-center">
+        <div class="col p-0">
+          {% if obj %}
+          <div class="modal-body mt-5">
+            {% if obj.contexttitle  %}
+            <h3 class="text-uppercase mt5 mb-3"> {{obj.contexttitle}} </h3>
+            {% endif %}
+            {% if obj.contexttitle  %}
+            <p class="item-intro text-muted"> {{obj.contextSubtitle}} </p>
+            {% endif %}
+            {% if obj.contextparagraf  %}
+            <p>{{obj.contextparagraf}}</p>
+            {% endif %}
+            {% if obj.contextslogan  %}
+            <ul class="list-inline">
+              <li class="display-4 lead">{{obj.contextslogan}}</li>
+            </ul>
+            {% endif %}
+            
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+
+
+
+{% endblock body %}

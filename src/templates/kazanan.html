@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+<main id="main">
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials ">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <p>Kazananlar</p>
+            </div>
+
+            <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
+                {% if obj %}
+                {% for objext in obj  %}
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        {{objext.wintime.date}} tarihinde yapılan çekilişin kazananı
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{{ objext.image.url }}" class="testimonial-img" alt="">
+                    <h3>{{objext.name}}</h3>
+                    <!-- <h4>Ceo &amp; Founder</h4> -->
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <div class="testimonial-item">
+                    <p>
+                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                        ferhattugrul.online
+                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{% static 'assets/img/testimonials/testimonials-1.jpg '%}" class="testimonial-img" alt="">
+                    <h3>ferhattugrul</h3>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+
+</main><!-- End #main -->
+
+{% endblock body %}

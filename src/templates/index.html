@@ -1,0 +1,939 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container position-relative text-center text-lg-left" data-aos="zoom-in" data-aos-delay="100">
+    <div class="row">
+
+      <!-- ======= Why Us Section ======= -->
+      <section id="why-us" class="why-us">
+        <div class="container" data-aos="fade-up">
+
+          <!-- <div class="section-title">
+              <h2>Why Us</h2>
+              <p>Why Choose Our Restaurant</p>
+            </div> -->
+
+          <div class="row">
+
+            <div class="col-lg-6 p-3">
+              <a class="portfolio-link" data-toggle="modal" href="#kahvesayisi">
+
+                <div class="box" data-aos="zoom-in" data-aos-delay="100">
+
+                  <!-- sayma işlemi için gerekli jquery versiyonu -->
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+                  {% if obj %}
+
+                  <span style="font-size: 80px;" class='count '> {{ obj }} </span>
+                  {% else %}
+
+                  <span style="font-size: 80px;" class='count '> 1000 </span>
+                  {% endif %}
+
+                  <h4>Bugünkü kahve sayısı</h4>
+
+                  <p> <i class="icofont-search-2 icofont-3x inspect"></i></p>
+
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-6 mt-6 mt-lg-0 p-3">
+              <a class="portfolio-link" data-toggle="modal" href="#yardimsayisi">
+                <div class="box bg-3" data-aos="zoom-in" data-aos-delay="200">
+
+                  <div class="pl-4">
+                    {% if orangeboxmodel %}
+                    <h6>{{orangeboxmodel.first}}</h6>
+                    <h5>{{orangeboxmodel.second}}</h5>
+                    <h5> {{orangeboxmodel.third}}</h5>
+                    {% else %}
+
+                    <h6>Sokak</h6>
+                    <h5>Hayvanlarına</h5>
+                    <h5> Yardım</h5>
+                    {% endif %}
+
+                    <div class="row mama ">
+                      <span class="tl slim">TL</span>
+                      {% if obj %}
+                      <span style="font-size: 40px;" class='count '> {{ obj }} </span>
+                      {% else %}
+                      <span style="font-size: 40px;" class='count '> 1000</span>
+                      {% endif %}
+                      <span class="bugun slim">Bugün</span>
+                    </div>
+                  </div>
+                  <p> <i class="icofont-search-2 icofont-3x inspect"></i></p>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-6 mt-6 mt-lg-0 p-3">
+              <a class="portfolio-link" data-toggle="modal" href="#cekilis">
+                <div class="box bg-2" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="pl-5">
+                    {% if redboxmodel %}
+                    <div class="row">
+                      <h6>{{redboxmodel.first}}</h6>
+
+                    </div>
+                    <div class="cekiliş row">
+                      <h5 class="">{{redboxmodel.second}}</h5>
+                    </div>
+                    <div class="row">
+                      <h6>{{redboxmodel.third}}</h6>
+                    </div>
+
+                    {% else %}
+                    <div class="row">
+                      <h6>Kahve Ağacı</h6>
+
+                    </div>
+                    <div class="cekiliş row">
+                      <h5 class="">Fiş</h5>
+                    </div>
+                    <div class="row">
+                      <h6>Kayıtları</h6>
+                    </div>
+                    {% endif %}
+
+                  </div>
+                  <p> <i class="icofont-search-2 icofont-3x inspect"></i></p>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-6 mt-6 mt-lg-0 p-3">
+              <div class="box bg-1" data-aos="zoom-in" data-aos-delay="200">
+                <div class="row ">
+                  <div class="col  pl-5">
+
+
+                    {% if  greeenboxmodel%}
+
+                    <h5>{{greeenboxmodel.first}}</h5>
+                    <h6>{{greeenboxmodel.second}}</h6>
+                    {% else %}
+
+                    <h5>Kahve</h5>
+                    <h6>Ağacı</h6>
+                    {% endif %}
+
+                  </div>
+                  <div class="col m-sm-auto ">
+                    <div class="row jcenter my-3">
+                      <a data-toggle="modal" href="#kahveagacidoctors" class="doctors"><i
+                          class="icofont-stethoscope-alt"></i></a>
+
+                      <p class="doctors-kahve ">
+                        {% if totaltreemodel %}
+                        <span class='count '> {{ totaltreemodel.totaldoctorcofee }}
+                        </span>
+                        {% else %} 100 {% endif %} adet</p>
+                    </div>
+
+                    <div class="row jcenter my-3">
+                      <a data-toggle="modal" href="#kahveagacistudent" class="students"><i
+                          class="icofont-pencil"></i></a>
+                      <p class="students-kahve">
+                        {% if totaltreemodel %}
+                        <span class='count '> {{ totaltreemodel.totalstudentcofee }} </span>
+                        {% else %}
+                        100
+                        {% endif %} adet</p>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section><!-- End Hero -->
+
+
+
+
+<div class="portfolio-modal modal fade" id="kahvesayisi" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg'%}"
+          alt="Close modal" />
+      </div>
+      <!-- <div class="container"> -->
+      <div class="row justify-content-center">
+        <div class="col p-0">
+          {% if kahvesayisimodel %}
+
+
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+
+                  {% if kahvesayisimodel.image %}
+
+                  <div class="about-img">
+                    <img src="{{kahvesayisimodel.image.url}}" alt="">
+                  </div>
+
+                  {% else %}
+
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                  {% endif %}
+
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>{{kahvesayisimodel.title}}</h3>
+
+                  <p>
+                    {{kahvesayisimodel.subtitle}}
+                  </p>
+
+                  <p>
+                    {{kahvesayisimodel.pragraf|safe}}
+                  </p>
+
+                  <p>
+                    {{kahvesayisimodel.slogan}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% else %}
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>Voluptatem dignissimos</h3>
+                  <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore
+                    magna aliqua.
+                  </p>
+
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% endif %}
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div class="portfolio-modal modal fade" id="yardimsayisi" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="/static/assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="row justify-content-center">
+
+        <div class="col p-0">
+          {% if yardımsayisimodel %}
+
+
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  {% if yardımsayisimodel.image %}
+
+                  <div class="about-img">
+                    <img src="{{yardımsayisimodel.image.url}}" alt="">
+                  </div>
+
+                  {% else %}
+
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>{{yardımsayisimodel.title}}</h3>
+
+                  <p>
+                    {{yardımsayisimodel.subtitle}}
+                  </p>
+
+                  <p>
+                    {{yardımsayisimodel.pragraf|safe}}
+                  </p>
+
+                  <p>
+                    {{yardımsayisimodel.slogan}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% else %}
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>Voluptatem dignissimos</h3>
+                  <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore
+                    magna aliqua.
+                  </p>
+
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="portfolio-modal modal fade" id="kahveagacistudent" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="/static/assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="row justify-content-center">
+
+        <div class="col p-0">
+          {% if kahveagacimodel %}
+
+
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  {% if kahveagacimodel.imagetudent %}
+
+                  <div class="about-img">
+                    <img src="{{kahveagacimodel.imagetudent.url}}" alt="">
+                  </div>
+
+                  {% else %}
+
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>{{kahveagacimodel.titlestudent}}</h3>
+
+                  <p>
+                    {{kahveagacimodel.subtitlestudent}}
+                  </p>
+
+                  <p>
+                    {{kahveagacimodel.pragrafstudent|safe}}
+                  </p>
+
+                  <p>
+                    {{kahveagacimodel.sloganstudent}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="contact" class="contact py-0 ">
+            <div class="container" data-aos="fade-up">
+              <div style="justify-content: center" class="row">
+                <div class="col-lg-10 mt-5 mt-lg-0">
+                  <!-- -->
+                  <form method="post" action="kahveal/" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{formiki.name}}
+                      </div>
+
+                    </div>
+
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{formiki.phone}}
+                      </div>
+                    </div>
+
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{formiki.note}}
+                      </div>
+                    </div>
+
+                    <div class="mb-3 form-row jcenter">
+                      <div class="loading">Loading</div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        <div class="text-center"><button type="submit">Bir Kahve Al</button></div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+          {% else %}
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>Voluptatem dignissimos</h3>
+                  <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore
+                    magna aliqua.
+                  </p>
+
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% endif %}
+        </div>
+
+        <!-- 
+
+        <div class="col p-0">
+          {% if kahveagacimodel %}
+          <div class="modal-body mt-5">
+
+            <h3 class="text-uppercase mt5 mb-3"> {{kahveagacimodel.titlestudent}} </h3>
+            <p class="item-intro text-muted">{{kahveagacimodel.subtitlestudent}}</p>
+            <p>{{kahveagacimodel.pragrafstudent}}</p>
+            <ul class="list-inline">
+              <li class="display-4 lead">{{kahveagacimodel.sloganstudent}}</li>
+            </ul>
+
+
+            <section id="contact" class="contact py-0 ">
+              <div class="container" data-aos="fade-up">
+                <div style="justify-content: center" class="row">
+                  <div class="col-lg-10 mt-5 mt-lg-0">
+                  
+                    <form method="post" action="kahveal/" class="php-email-form">
+                      {% csrf_token %}
+                      <div class="form-row jcenter">
+                        <div class="col-md-6 form-group">
+                          {{formiki.name}}
+                        </div>
+
+                      </div>
+                      <div class="form-row jcenter">
+                        <div class="col-md-6 form-group">
+                          {{formiki.email}}
+                        </div>
+                      </div>
+                      <div class="form-row jcenter">
+                        <div class="col-md-6 form-group">
+                          {{formiki.phone}}
+                        </div>
+                      </div>
+
+                      <div class="mb-3 form-row jcenter">
+                        <div class="loading">Loading</div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                      </div>
+
+                      <div class="form-row jcenter">
+                        <div class="col-md-6 form-group">
+                          <div class="text-center"><button type="submit">Bir Kahve Al</button></div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+
+              </div>
+            </section>
+          </div>
+          {% endif %}
+        </div> -->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="portfolio-modal modal fade" id="kahveagacidoctors" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="/static/assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="row justify-content-center">
+        <div class="col p-0">
+          {% if kahveagacimodel %}
+
+
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  {% if kahveagacimodel.imagedoctor %}
+
+                  <div class="about-img">
+                    <img src="{{kahveagacimodel.imagedoctor.url}}" alt="">
+                  </div>
+
+                  {% else %}
+
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>{{kahveagacimodel.titledoctor}}</h3>
+
+                  <p>
+                    {{kahveagacimodel.subtitledoctor}}
+                  </p>
+
+                  <p>
+                    {{kahveagacimodel.pragrafdoctor|safe}}
+                  </p>
+
+                  <p>
+                    {{kahveagacimodel.slogandoctor}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <section id="contact" class="contact py-0">
+            <div class="container" data-aos="fade-up">
+              <div style="justify-content: center" class="row">
+                <div class="col-lg-10 mt-5 mt-lg-0">
+                  <!-- -->
+                  <form method="post" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{form.name}}
+                      </div>
+
+                    </div>
+
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{form.phone}}
+                      </div>
+                    </div>
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        {{form.note}}
+                      </div>
+                    </div>
+
+                    <div class="mb-3 form-row jcenter">
+                      <div class="loading">Loading</div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+
+                    <div class="form-row jcenter">
+                      <div class="col-md-6 form-group">
+                        <div class="text-center"><button type="submit">Bir Kahve Al</button></div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {% else %}
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>Voluptatem dignissimos</h3>
+                  <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore
+                    magna aliqua.
+                  </p>
+
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="portfolio-modal modal fade" id="cekilis" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal"><img src="/static/assets/img/close-icon.svg" alt="Close modal" />
+      </div>
+      <div class="row justify-content-center">
+        <!--  -->
+
+        <div class="col p-0">
+          {% if pillregistercontextmodel %}
+
+
+
+          <section id="about" class="about py-2">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  {% if pillregistercontextmodel.image %}
+
+                  <div class="about-img">
+                    <img src="{{pillregistercontextmodel.image.url}}" alt="">
+                  </div>
+
+                  {% else %}
+
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>{{pillregistercontextmodel.title}}</h3>
+
+                  <p>
+                    {{pillregistercontextmodel.subtitle}}
+                  </p>
+
+                  <p>
+                    {{pillregistercontextmodel.pragraf|safe}}
+                  </p>
+
+                  <p>
+                    {{pillregistercontextmodel.slogan}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ======= Contact Section ======= -->
+          <section id="contact" class="contact p-0">
+            <div class="container" data-aos="fade-up">
+              <div style="justify-content: center" class="row mt-5">
+                <div class="col-lg-10 mt-5 mt-lg-0">
+                  <!-- -->
+                  <form method="post" action="kahve_agaci_fis_kayitlari/" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                      <div class="col-md-4 form-group">
+                        {{formpill.name}}
+                      </div>
+                      <div class="col-md-4 form-group">
+                        {{formpill.phone}}
+                      </div>
+                      <div class="col-md-4 form-group">
+                        {{formpill.pill}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="loading">Loading</div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">Kayıt Et</button></div>
+
+                  </form>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+          <!-- End Contact Section -->
+
+
+          {% else %}
+
+          <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+
+              <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="about-img">
+                    <img src="{% static 'assets/img/about.jpg '%}" alt="">
+                  </div>
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                  <h3>Voluptatem dignissimos</h3>
+                  <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore
+                    magna aliqua.
+                  </p>
+
+                  <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <div class="modal-body ">
+            <button class="btn btn-secondary" data-dismiss="modal" type="button">
+              <i class="fas fa-times mr-1"></i>
+              KAPAT
+            </button>
+          </div>
+
+
+          {% endif %}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}
